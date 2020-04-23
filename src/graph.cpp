@@ -21,7 +21,6 @@ Graph::Graph(std::string fileName) {
       if (j != i) {
         std::string auxEdge;
         std::getline(file, auxEdge);
-        std::cout << auxEdge << std::endl;
         graph[i].setEdge(stof(auxEdge), j);
         graph[j].setEdge(stof(auxEdge), i);
       }

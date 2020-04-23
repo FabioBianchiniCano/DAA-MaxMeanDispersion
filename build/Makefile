@@ -18,7 +18,13 @@ $(ODIR)/node.o: $(SDIR)/node.cpp $(IDIR)/node.h
 $(ODIR)/graph.o: $(SDIR)/graph.cpp $(IDIR)/graph.h $(ODIR)/node.o
 	$(CXX) -c -o $@ $< $(CFLAGS)
 
-$(ODIR)/main.o: $(SDIR)/main.cpp $(ODIR)/graph.o $(ODIR)/node.o
+$(ODIR)/strategy.o: $(IDIR)/strategy.h
+	$(CXX) -c -o $@ $< $(CFLAGS)
+
+$(ODIR)/context.o: $(IDIR)/context.h $(IDIR)/strategy.h
+	$(CXX) -c -o $@ $< $(CFLAGS)
+
+$(ODIR)/main.o: $(SDIR)/main.cpp $(ODIR)/graph.o $(ODIR)/node.o $(ODIR)/context.o $(ODIR)/strategy.o
 	$(CXX) -c -o $@ $< $(CFLAGS)
 
 main: $(_OBJ)
