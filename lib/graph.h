@@ -11,6 +11,7 @@ public:
   Graph(std::vector<Node>);
   Graph(std::string);
   std::vector<Node> getGraph();
+  int getSize();
   Node operator[](int);
   friend std::ostream& operator<<(std::ostream&, const Graph&);
 };

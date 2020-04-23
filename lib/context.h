@@ -15,8 +15,8 @@ public:
     _strategy = strategy;
   }
 
-  void algorithm() {
-    _strategy->algorithm();
+  void algorithm(Graph graph) {
+    _strategy->algorithm(graph);
   }
 
 };

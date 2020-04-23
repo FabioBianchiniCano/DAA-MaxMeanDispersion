@@ -33,6 +33,10 @@ std::vector<Node> Graph::getGraph() {
   return graph;
 }
 
+int Graph::getSize() {
+  return nNodes;
+}
+
 Node Graph::operator[](int position) {
   return graph[position];
 }

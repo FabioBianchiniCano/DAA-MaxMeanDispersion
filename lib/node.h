@@ -1,19 +1,19 @@
 #pragma once
 
+#include <fstream>
 #include <iostream>
 #include <vector>
-#include <fstream>
 
 class Node {
-private:
+ private:
   std::vector<float> edges;
-public:
+
+ public:
   Node(std::vector<float>);
   Node(int);
-  ~Node(){}
+  ~Node() {}
   std::vector<float> getEdges();
   void setEdge(float, int);
   float operator[](int);
   friend std::ostream& operator<<(std::ostream&, const Node&);
 };
-
