@@ -3,7 +3,6 @@
     80
   ],
   "files.associations": {
-    "powermode.enabled": "true",
     "atomic": "cpp",
     "*.tcc": "cpp",
     "deque": "cpp",
@@ -19,6 +18,8 @@
     "sstream": "cpp",
     "streambuf": "cpp",
     "system_error": "cpp",
-    "tuple": "cpp"
+    "tuple": "cpp",
+    "iosfwd": "cpp",
+    "iostream": "cpp"
   }
 }
