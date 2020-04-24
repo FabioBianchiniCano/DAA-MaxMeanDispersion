@@ -7,15 +7,18 @@ IDIR=../lib
 ODIR=../obj
 
 
-_OBJ = $(ODIR)/node.o $(ODIR)/graph.o $(ODIR)/main.o
+_OBJ = $(ODIR)/edge.o $(ODIR)/node.o $(ODIR)/graph.o $(ODIR)/main.o
 # _OBJ = $(ODIR)/main.o
 
 all: main
 
-$(ODIR)/node.o: $(SDIR)/node.cpp $(IDIR)/node.h
+$(ODIR)/edge.o: $(SDIR)/edge.cpp $(IDIR)/edge.h
 	$(CXX) -c -o $@ $< $(CFLAGS)
 
-$(ODIR)/graph.o: $(SDIR)/graph.cpp $(IDIR)/graph.h $(ODIR)/node.o
+$(ODIR)/node.o: $(SDIR)/node.cpp $(IDIR)/node.h $(ODIR)/edge.o
+	$(CXX) -c -o $@ $< $(CFLAGS)
+
+$(ODIR)/graph.o: $(SDIR)/graph.cpp $(IDIR)/graph.h $(ODIR)/node.o $(ODIR)/edge.o
 	$(CXX) -c -o $@ $< $(CFLAGS)
 
 $(ODIR)/strategy.o: $(IDIR)/strategy.h
@@ -24,7 +27,7 @@ $(ODIR)/strategy.o: $(IDIR)/strategy.h
 $(ODIR)/context.o: $(IDIR)/context.h $(IDIR)/strategy.h
 	$(CXX) -c -o $@ $< $(CFLAGS)
 
-$(ODIR)/main.o: $(SDIR)/main.cpp $(ODIR)/graph.o $(ODIR)/node.o $(ODIR)/context.o $(ODIR)/strategy.o
+$(ODIR)/main.o: $(SDIR)/main.cpp $(ODIR)/graph.o $(ODIR)/node.o $(ODIR)/edge.o $(ODIR)/context.o $(ODIR)/strategy.o
 	$(CXX) -c -o $@ $< $(CFLAGS)
 
 main: $(_OBJ)
